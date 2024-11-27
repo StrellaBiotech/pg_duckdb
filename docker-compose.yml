@@ -1,11 +1,12 @@
 services:
   db:
-    image: pgduckdb/pgduckdb:16-main
+    image: pgduckdb/pgduckdb:17-main
     ports:
       - ${PORT:-5432}:5432
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: ${PASSWORD:-duckdb}
+      motherduck_token: ${MOTHERDUCK_TOKEN}
     volumes:
       - pgduckdb_data:/var/lib/postgresql/data
       - ./docker/postgresql.conf:/etc/postgresql/postgresql.conf
